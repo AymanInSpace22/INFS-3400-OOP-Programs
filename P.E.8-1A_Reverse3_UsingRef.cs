@@ -12,15 +12,14 @@ class Reverse3
 
       Reverse(ref firstInt, ref middleInt, ref lastInt);
       WriteLine("{0} {1} {2}", firstInt, middleInt, lastInt);
-      /*WriteLine(middleInt);
-      WriteLine(lastInt);*/
+     
 
 
    }
    
    public static void Reverse(ref int firstInt, ref int middleInt, ref int lastInt)
    {
-     //WriteLine("{0} {1} {2}", c, b, a);
+     
      int temp;
      temp = firstInt;
      firstInt = lastInt;
