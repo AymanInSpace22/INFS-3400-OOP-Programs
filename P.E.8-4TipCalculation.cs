@@ -9,12 +9,23 @@ class TipCalculation
       double price;
       double tip;
       int tipInt;
+      string entry;
 
       // prompt the user to enter the double inputs
       Write("Enter a floating point price of the item:  ");
       price = double.Parse(ReadLine());
       Write("Enter tip amount: ");
-      tip = double.Parse(ReadLine());
+      entry = ReadLine();
+      if(int.TryParse(entry, out tipInt))
+      {
+        DisplayTipInfo(price, tipInt);
+      }
+      else if(double.TryParse(entry, out tip))
+      {
+        DisplayTipInfo(price, tip);
+      }
+      
+      /*tip = double.Parse(ReadLine());
 
     
       DisplayTipInfo(price, tip);
@@ -25,11 +36,11 @@ class TipCalculation
       Write("Enter the price of another item: ");
       price = double.Parse(ReadLine());
       Write("Enter the tip amount as a whole number: ");
-      tipInt = int.Parse(ReadLine());
+      tipInt = int.Parse(ReadLine());*/
 
 
      
-      DisplayTipInfo(price, tipInt);
+      
 
    }
 
@@ -50,12 +61,12 @@ class TipCalculation
    public static void DisplayTipInfo(double price, int tipInDollars)
    {
   
-     double rate = price / tipInDollars;
+     double rate = tipInDollars / price;
 
      double sum = price + tipInDollars;
 
-     WriteLine("Meal price: " + price.ToString("C", CultureInfo.GetCultureInfo("en-US")) + ". Tip percent: $" + rate.ToString("F"));
-     WriteLine("Tip in dollars: " + tipInDollars.ToString("C", CultureInfo.GetCultureInfo("en-US")) + ". Total bill: " + sum.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+     WriteLine("Meal price: " + price.ToString("C", CultureInfo.GetCultureInfo("en-US")) + ". Tip percent: " + rate.ToString("F"));
+     WriteLine("Tip in dollars: " + tipInDollars.ToString("C", CultureInfo.GetCultureInfo("en-US")) + ".  Total bill " + sum.ToString("C", CultureInfo.GetCultureInfo("en-US")));
 
 
    }
