@@ -27,10 +27,13 @@ public class Averages
         {
             sum += num;
             Console.Write(num + " ");
+            // when you loop like this. You can put a writeline to display the numbers involved
         }
 
         double average = 0;
         average = sum / nums.Length;
+        // remember, the .Length lets you pull in the number of variables that were used
+        
 
         Console.WriteLine(" -- Average is {0}", average);
 
