@@ -9,7 +9,7 @@ class SalesTaxDemo
     string inventoryNumber;
     double amount;
 
-    Sale[] obj = new Sale[10];
+    Sale[] sales = new Sale[10];
     for(int i = 0; i < 10; i++)
     {
       Write("Enter inventory number #" + (i + 1) + " >> ");
@@ -18,18 +18,18 @@ class SalesTaxDemo
       Write("Enter amount of sale >> ");
       amount = Convert.ToDouble(ReadLine());
 
-      obj[i] = new Sale();
-      obj[i].InventoryNumber = inventoryNumber;
-      obj[i].Amount = amount;
-      obj[i].CalculateTax();
+      sales[i] = new Sale();
+      sales[i].InventoryNumber = inventoryNumber;
+      sales[i].Amount = amount;
+      sales[i].CalculateTax();
     }
 
     for(int i = 0; i < 10; i++)
     {
-      WriteLine("Sale # {0} Amount: {1} Sale {2}",(i+1), obj[i].InventoryNumber, obj[i].Amount.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+      WriteLine("Sale # {0} Amount: {1} Sale {2}",(i+1), sales[i].InventoryNumber, sales[i].Amount.ToString("C", CultureInfo.GetCultureInfo("en-US")));
       /*WriteLine("Sale #" + (i+1) + " Amount: " + obj[i].InventoryNumber + " Sale $", obj[i].Amount.ToString("C", CultureInfo.GetCultureInfo("en-US")));
       WriteLine("Tax is $", obj[i].Tax.ToString("C", CultureInfo.GetCultureInfo("en-US")));*/
-      WriteLine("   Tax is {0}", obj[i].Tax.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+      WriteLine("   Tax is {0}", sales[i].Tax.ToString("C", CultureInfo.GetCultureInfo("en-US")));
     }
 
 
@@ -71,16 +71,17 @@ class Sale
       }
     }
 
+    // we are returning out method here because it is doing our calculation for tax
     public double Tax
     {
       get
       {
-        return tax;
+        return CalculateTax();
       }
     }
  
 
-   public void CalculateTax()
+   public double CalculateTax()
    {
     // Write your CalculateTax method here.
     if(amount < 100)
@@ -91,5 +92,7 @@ class Sale
     {
       tax = 100 * 0.08 + (amount - 100) * 0.06;
     }
+    // returning this to our Tax property
+    return tax;
    }
 }
